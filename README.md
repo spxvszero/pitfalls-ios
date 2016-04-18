@@ -1,7 +1,5 @@
 # pitfalls-ios
 
-# pitfalls-ios
-
 #### 2016-04-15 (五)    
 
 1、iOS 中分页视图控制器的管理手动调用viewController 中的viewWillAppear，viewDidAppear,等懒加载方法的调用。    
