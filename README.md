@@ -1,5 +1,22 @@
 # pitfalls-ios
 
+#### 2016-06-02
+1.tableview 中用xib创建cell时，第一个cell位置有时候会与顶部有一段距离   
+
+去掉该顶部距离方法：   
+
+创建 tableHeaderView ，通过改变tableHeaderView的大小来改变与顶部的距离。    
+
+<p code>
+UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 0.1)];    // 设置高度为0.1
+tableView.tableHeaderView = tableHeaderView;
+</p>
+
+注意：此处若直接设置headview 为空，则无任何作用    
+<p>
+tableView.tableHeaderView = nil;
+</p>
+
 #### 2016-04-15 (五)    
 
 1、iOS 中分页视图控制器的管理手动调用viewController 中的viewWillAppear，viewDidAppear,等懒加载方法的调用。    
