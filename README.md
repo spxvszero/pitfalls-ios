@@ -1,5 +1,23 @@
 # pitfalls-ios
 
+<<<<<<< HEAD
+#### 2016-06-02
+1.tableview 中用xib创建cell时，第一个cell位置有时候会与顶部有一段距离   
+
+去掉该顶部距离方法：   
+
+创建 tableHeaderView ，通过改变tableHeaderView的大小来改变与顶部的距离。    
+
+<p code>
+UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 0.1)];    // 设置高度为0.1
+tableView.tableHeaderView = tableHeaderView;
+</p>
+
+注意：此处若直接设置headview 为空，则无任何作用    
+<p>
+tableView.tableHeaderView = nil;
+</p>
+=======
 
 #### 2016-05-12
 
@@ -27,6 +45,7 @@
 解决方法：当播放音乐状态下开始实时传音的录制和播放, 对当前正在播放音乐进行处理, 然后在进行实时传音的相关操作, 完成后再对音乐状态进行恢复.
 
 ***
+>>>>>>> 7508da625785c407598524f0ce79fd87f87dfc4e
 
 #### 2016-04-15 (五)    
 
