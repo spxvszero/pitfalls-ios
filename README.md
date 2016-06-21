@@ -5,7 +5,7 @@
 [Lewanny](https://github.com/Lewanny)
 
 ####问题描述: 
-朗琴项目在获取本地iPods音乐时, 获取不全, 例如本机音乐100首, 只能获取到10多首.
+项目中在获取本地iPods音乐时, 获取不全, 例如本机音乐100首, 只能获取到10多首.
 
 ####问题分析：
 如下,这句代码 `[query setGroupingType: MPMediaGroupingPodcastTitle];`使用了MPMeidaQuery的setGroupingType方法将MPMeidaQuery的属性设置为了播客标题.<br>
