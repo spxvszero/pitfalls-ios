@@ -1,6 +1,49 @@
 # pitfalls-ios
 
 <<<<<<< HEAD
+#### 2016-06-21
+[Lewanny](https://github.com/Lewanny)
+
+####问题描述: 
+朗琴项目在获取本地iPods音乐时, 获取不全, 例如本机音乐100首, 只能获取到10多首.
+
+####问题分析：
+如下,这句代码 `[query setGroupingType: MPMediaGroupingPodcastTitle];`使用了MPMeidaQuery的setGroupingType方法将MPMeidaQuery的属性设置为了播客标题.<br>
+所以在获取的时候导致没有博客信息的曲目获取不到.
+
+
+```objective-c 
+    MPMediaQuery *query = [[MPMediaQuery alloc] init];
+    [query setGroupingType: MPMediaGroupingPodcastTitle];
+    NSArray *albums = [query collections];
+    for (MPMediaItemCollection *album in albums) {
+        MPMediaItem *representativeItem = [album representativeItem];
+        NSString *artistName =
+        [representativeItem valueForProperty: MPMediaItemPropertyArtist];
+        NSString *albumName =
+        [representativeItem valueForProperty: MPMediaItemPropertyAlbumTitle];
+        NSLog (@"%@ by %@", albumName, artistName);
+     
+        NSArray *songs = [album items];
+     }
+```
+####解决方案:
+使用如下方法获取, 不需要设置MPMeidaQuery的属性, 其默认为MPMediaGroupingTitle, 即按照Title获取即可.
+
+```objective-c 
+    MPMediaQuery *myPlaylistsQuery = [MPMediaQuery songsQuery];
+    NSArray *playlists = [myPlaylistsQuery collections];
+    for (MPMediaPlaylist *playlist in playlists) {
+    
+        NSArray *array = [playlist items];
+        for (MPMediaItem *song in array) {
+            NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
+        }
+    }
+```
+***
+
+
 
 #### 2016-06-20
 [Lewanny](https://github.com/Lewanny)
