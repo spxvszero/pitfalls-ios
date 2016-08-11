@@ -1,5 +1,17 @@
 # pitfalls-ios
 
+#### 2016-08-11
+蓝牙相关的公司应用存在点击应用图标出现卡顿的问题：
+经过测试，didFinishLaunchingWithOptions的方法和卡顿是有直接关系的。
+测试方法，去掉了didFinishLaunchIngWithOptions的一些处理。就没有重现这个卡顿现象（应该说卡顿时间特别短）。卡顿出现一般是长时间不打开不用这个应用。（大概30分钟以上，出现几率比较大）
+目前项目修改方式，是在didFinishLaunchingWithOptions里添加一个子线程，对不涉及ui的操作放到子线程里处理。
+处理方式为：
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+    //非主线程更新ui处理
+    }
+这样的方式可以处理非主线程的事情。
+
 #### 2016-08-10
 
 在ipod上安装不了测试包，在其他手机上可以正常安装的测试包的问题：
