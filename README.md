@@ -1,5 +1,19 @@
 # pitfalls-ios
 
+#### 2016-10-11
+iOS 10 打开相册闪退bug   
+
+报错提示信息：   
+2016-10-11 10:33:53.178931 BluetoothColorLampMeshLamp[745:235978] [access] This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription key with a string value explaining to the user how the app uses this data.
+
+解决办法：   
+在plist中添加字段：      
+Privacy - Camera Usage Description         
+cameraDesciption      
+
+Privacy - Photo Library Usage Description      
+photoLibraryDesciption      
+
 #### 2016-10-09
 炬力返回有表情的设备名字时，返回设备名字为空的问题。
 
