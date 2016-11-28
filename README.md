@@ -1,4 +1,34 @@
 # pitfalls-ios
+#### 2016-10-17
+iOS 10 却少对隐私权限的描述被 app store 被拒
+app store 上传app 时因为没有对使用功能的权限进行描述而被拒解决方法总结
+拒绝时而收到的邮件内容
+
+您好：
+ 
+感谢您就上传 App 构建版本的问题联系 Apple Developer Program Support。
+
+从 iOS 10 开始，访问任何应用中受保护的数据类都需要使用目的字符串（purpose string），包括所有第三方库在您的应用里使用这些受保护的数据类的用途。如果您收到有关您无法识别的数据类缺少目的字符串（purpose string）的提示，请咨询您的第三方库供应商，了解其对该受保护数据类的使用。
+有关更多详细信息，请参阅以下资源：
+App Programming Guide for iOS 中的 ”Supporting User Privacy“
+https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/ExpectedAppBehaviors/ExpectedAppBehaviors.html#//apple_ref/doc/uid/TP40007072-CH3-SW6
+Information Property List Key Reference 中的 “Cocoa Keys”
+https://developer.apple.com/library/prerelease/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html
+WWDC 2016: Engineering Privacy for Your Users (usage description keys discussed at 29:14)
+https://developer.apple.com/videos/play/wwdc2016/709/?time=1754
+希望以上信息对您有帮助。如果您需要再次联系我们，欢迎致电或通过电邮的方式跟我们联系，并提供案例编号：100045823076。我们的办公时间是北京时间周一至周五，09:00 至 17:00，电话号码是 4006-701-855。
+我们很乐意给您提供帮助，感谢您参与我们的开发者计划。 
+Queenie
+Apple Inc. 
+
+在工程的info.plist文件中需要添加获取用户隐私权限的key ，并且要对key 进行描述，因为没有对权限的key 进行描述，所以才会被拒，在plist文件中代码如下
+<key>NSAppleMusicUsageDescription</key>
+<string>此 App 需要您的同意才能获取本地音乐</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>App需要您的同意,才能访问蓝牙</string>
+
+
+这样就不会被拒了
 
 #### 2016-10-11
 iOS 10 打开相册闪退bug   
