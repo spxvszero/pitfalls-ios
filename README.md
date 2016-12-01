@@ -59,7 +59,7 @@ If you have code-level questions after utilizing the above resources, you may wi
 ```
 
 大致意思是当前APP仍支持后台音乐。   
-经查找发现，Required background modes 中确实存在App plays audio or streams audio/video using AirPlay 字段 删除后即可。   
+经查找发现，```Required background modes``` 中确实存在```App plays audio or streams audio/video using AirPlay``` 字段 删除后即可。   
 ####总结：
   在提交app store版本时，应确认使用的功能，一定要加上对应的字段。此外，应确保配置文件plist中没有多余的权限字段，即没有使用到的功能，应及时删除对应字段，否则app会被拒。
   
