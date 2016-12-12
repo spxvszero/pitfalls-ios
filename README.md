@@ -1,5 +1,43 @@
 # pitfalls-ios
 
+#### 2016-12-12
+
+项目在繁体下有些图片无法显示的问题
+
+这个问题涉及到国际化问题，先了解下我是国际化处理的方式。   
+首先创建一个language.plist文件。里面包含了你需要国际化的语言。    
+例如：   
+key zh-HK value  zh-Hant-HK。    
+key zh-TW value  zh-Hant-TW。    
+key en    value  en    
+
+获取对应的语言下的值    
+define kLanguageDictionary [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"language" ofType:@"plist"]]
+
+```objective-c 
+if (!kLanguageDictionary[key]) {
+        path = [[NSBundle mainBundle] pathForResource:@"en" ofType:@"lproj"];
+}else
+{
+        path = [[NSBundle mainBundle] pathForResource:kLanguageDictionary[key] ofType:@"lproj"];
+}
+
+NSBundle * languageBundle = [NSBundle bundleWithPath:path];
+//根据对应的Localizable.string来获取对应的语言显示。没有的话显示英文。
+s = [languageBundle localizedStringForKey:translation_key value:@"" table:nil];
+```
+
+图片国际化利用图片的名字在对应的Localizable来声明图片。例如：   
+zh-HK下   
+"btn_control_active" = "btn_control_active_zh_hant";   
+"btn_control_inactive" = "btn_control_inactive_zh_hant";   
+en下   
+"btn_control_active" = "btn_control_active_en";   
+"btn_control_inactive" = "btn_control_inactive_en";   
+
+在这种情况，如果图片名字没有写对，这个位置就不会显示对应的图片。
+
+
 #### 2016-12-01
 ###iOS plist配置文件中存在未使用权限字段被拒问题
 * 第一次被拒：
