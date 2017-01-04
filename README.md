@@ -12,10 +12,9 @@
     clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
-
 原因：    
    工程中的配置项 other linker flag 中配置了 -all_load ,导致了重复的目标文件被链接加载到可执行文件中。    
-   
+   
 解决办法：      
    去掉 -all_load 即可。 
      
