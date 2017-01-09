@@ -13,7 +13,7 @@
 ####二、解决办法：
     1.网上找到一个跟这个有些类似的博客，就是将该证书中的默认值“使用系统默认”，改成“始终信任”。
        完成后，原来红色的提示信息变成了“此证书已标记为受此账号信任”。这样就解决“此证书的签发者无效”的问题。
-        博客地址：[http://jingyan.baidu.com/article/49711c617a540cfa441b7c86.html](http://jingyan.baidu.com/article/49711c617a540cfa441b7c86.html)
+        博客地址：[http://jingyan.baidu.com/article/49711c617a540cfa441b7c86.html](http://jingyan.baidu.com/article/49711c617a540cfa441b7c86.html)     
        (PS: 由于实测发现，不用证书也能访问成功，所以暂时还没想到怎么测试此方法的可行性。)
 
 
