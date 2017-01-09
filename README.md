@@ -22,7 +22,7 @@
 在Xcode7.0之后,苹果废弃了NSURLConnection方法,数据请求使用NSURLSession,作为网络请求类第三方库使用量最大的AFN也及时的更新的新的版本——AFN 3.0版本。
 新的版本的里废弃了基于NSURLConnection封装的AFHTTPRequestOperationManager，转而使用基于NSURLSession封装的AFHTTPSessionManager了。
 
-  *1）支持https（校验证书）:
+1）支持https（校验证书）:
 
 
 
@@ -40,7 +40,7 @@
         // 是否在证书域字段中验证域名
         [mgr.securityPolicy setValidatesDomainName:NO];
     
-  *2）支持https（不校验证书）:
+2）支持https（不校验证书）:
 
         // 1.初始化单例类
          AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
