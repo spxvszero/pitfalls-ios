@@ -1,5 +1,59 @@
 # pitfalls-ios
 
+#### 2017-01-09
+关于iOS https 证书签发者无效的问题
+
+####一、问题：
+    由于后台提供的 crt 证书文件安装后，会出现两种奇怪的现象，一部分人的电脑显示证书有效，
+有部分人显示此证书签发者无效。所以推测是跟自己电脑钥匙串或者其他的配置有关，具体由哪个配置
+引起的，仍未找到。有头绪的童鞋，欢迎一起来讨论研究下。
+
+
+####二、解决办法：
+    1.网上找到一个跟这个有些类似的博客，就是将该证书中的默认值“使用系统默认”，改成“始终信任”。
+       完成后，原来红色的提示信息变成了“此证书已标记为受此账号信任”。这样就解决“此证书的签发者无效”的问题。
+        博客地址：http://jingyan.baidu.com/article/49711c617a540cfa441b7c86.html
+       (PS: 由于实测发现，不用证书也能访问成功，所以暂时还没想到怎么测试此方法的可行性。)
+
+
+####三、另外，附上目前主流的两种支持https的方式：
+
+在Xcode7.0之后,苹果废弃了NSURLConnection方法,数据请求使用NSURLSession,作为网络请求类第三方库使用量最大的AFN也及时的更新的新的版本——AFN 3.0版本。
+新的版本的里废弃了基于NSURLConnection封装的AFHTTPRequestOperationManager，转而使用基于NSURLSession封装的AFHTTPSessionManager了。
+
+*1）支持https（校验证书）:
+
+
+
+      // 1.初始化单例类
+       AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+      // 注意写法的变化
+          manager.securityPolicy=  [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+
+        // 2.设置证书模式
+        NSString * cerPath = [[NSBundle mainBundle] pathForResource:@"xxx" ofType:@"cer"];
+        NSData * cerData = [NSData dataWithContentsOfFile:cerPath];
+        manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:[[NSSet alloc] initWithObjects:cerData, nil]];
+        // 客户端是否信任非法证书
+        mgr.securityPolicy.allowInvalidCertificates = YES;
+        // 是否在证书域字段中验证域名
+        [mgr.securityPolicy setValidatesDomainName:NO];
+    
+*2）支持https（不校验证书）:
+
+        // 1.初始化单例类
+         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        // 2.设置非校验证书模式
+        manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        [manager.securityPolicy setValidatesDomainName:NO];
+
+####四、测试结果：
+          经程序测试发现，无论是使用方式一中的证书校验模式，还是方式二中的非证书校验模式，都能请求到数据。
+
+####五、总结：
+        如果项目不涉及支付等敏感数据，可以直接使用不校验证书的方式，仅配置https的基本配置即可。
+
 #### 2017-01-04   
 替换最新版本科大讯飞出现的问题：    
 错误提示：   
