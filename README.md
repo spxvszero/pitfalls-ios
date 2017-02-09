@@ -1,6 +1,28 @@
 # pitfalls-ios
 
 
+
+#### 2017-02-09
+##### 较长字段 URL 编码的坑
+有时候做网页分享时，需要生成一个 URL字符串，该URL 自由短短的几个字段，但每个字段的数据都很长，比如每个字段都是一个 JSON 结构，而该请求不方便用 POST 请求，如果直接传输该字符串，在移动客户端，可能没法打开（PC端往往可以），此时在 iOS 端又不直接提供 URL Encoding 的方法。
+
+例：比如该 URL 要拼接 data=[]的字段 ;中括号内部是一个 JSON 数据字符串，最后分享出去的时候出现了加载失败的提示。
+
+解决方式：对中括号内部的数据（包括中括号）进行 URL Encoding，为方便起见，对NSString 对象新建一个 URL Encoding 的类目，并实现该 URL Encoding 的方法。
+
+
+    -(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding 
+    {
+    	return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes
+    	(NUL,
+    	(CFStringRef)self,
+    	NULL,
+    	(CFStringRef)@"!*'\"();:@&=+$,/?%#[]%",
+    	CFStringConvertNSStringEncodingToEncoding(encoding)));
+    }
+
+encoding 往往使用 UTF-8 。
+
 #### 2017-02-04
 HTTPS 适配中的坑总结    
 ##### 1、 修改 CocoaPods 导入的库导致无法正常请求 Https 的情形
