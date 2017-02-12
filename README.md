@@ -32,6 +32,17 @@ HTTPS 适配中的坑总结
 
 例：在使用 DTCoreText 图文混排库加载 Https 图片的时候使，DTLazyImageView 使用的是 NSURLSession ( iOS 9 or later) 或 NSURLConnection 进行图片加载，遗憾的是，DTCoreText 并未处理是否信任服务器的验证。导致自己无法不对 DTCoreText 库进行修改。    
 
+在控制台上打印 error 信息如下：
+
+    Error Domain=NSURLErrorDomain Code=-1202 "此服务器的证书无效。您可能正在连接到一个伪装成“banks.snaillove.com”的服务器，	这会威胁到您的机密信息的安全。" UserInfo={NSURLErrorFailingURLPeerTrustErrorKey=<SecTrustRef: 0x1741197d0>, 	NSLocalizedRecoverySuggestion=您仍要连接此服务器吗？, _kCFStreamErrorDomainKey=3, _kCFStreamErrorCodeKey=-9807, 	NSErrorPeerCertificateChainKey=(
+    "<cert(0x10422b200) s: ***.com i: StartCom Class 1 DV Server CA>",
+    "<cert(0x104228000) s: StartCom Class 1 DV Server CA i: StartCom Certification Authority>"
+	), NSUnderlyingError=0x174445d60 {Error Domain=kCFErrorDomainCFNetwork Code=-1202 "(null)" 	UserInfo={_kCFStreamPropertySSLClientCertificateState=0, kCFStreamPropertySSLPeerTrust=<SecTrustRef: 	0x1741197d0>, _kCFNetworkCFStreamSSLErrorOriginalValue=-9807, _kCFStreamErrorDomainKey=3, 	_kCFStreamErrorCodeKey=-9807, kCFStreamPropertySSLPeerCertificates=(
+    "<cert(0x10422b200) s: ***.com i: StartCom Class 1 DV Server CA>",
+    "<cert(0x104228000) s: StartCom Class 1 DV Server CA i: StartCom Certification Authority>"
+	)}}, NSLocalizedDescription=此服务器的证书无效。您可能正在连接到一个伪装成“banks.snaillove.com”的服务器，这会威胁到您的机密	信息的安全。, NSErrorFailingURLKey=https://***, 	NSErrorFailingURLStringKey= https://***, 	NSErrorClientCertificateStateKey=0}
+
+
 #####1.1 在 CocoaPods 里直接修改    
 现象：修改了之后无论如何无法请求成功，打了断点，当代码运行到断点所打之处，好像运行到该处了，但其实没有，修改了的代码也不起作用，很容易产生错觉，如果不仔细看 Xcode 上的调用栈很容易误认为就是调用到了该处，和没改之前一个模样。无论写了什么，无任何效用。
 
