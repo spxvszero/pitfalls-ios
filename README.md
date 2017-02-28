@@ -1,7 +1,27 @@
 # pitfalls-ios
 
 
+#### 2017-02-28
 
+#### 集成支付宝时出现：rsa_private read error : private key is NULL 的坑
+在集成支付宝进行支付的时候，控制台经常打印出现这样的日志：
+		
+	rsa_private read error : private key is NULL
+问题和它所描述的一样，私钥读取错误。    
+解决方法如下：    
+##### 1、仔细检查私钥是否有无，或者是否拿公钥当私钥来使，如有替换过来即可；    
+##### 2、替换支付宝本身 SDK RSADataSigner.m 类中的部分代码
+		
+	在RSADataSigner.m文件中 搜索代码
+	[result appendString:@"-----BEGIN PRIVATE KEY-----\n"];
+	将其改成
+	[result appendString:@"-----BEGIN RSA PRIVATE KEY-----\n"];
+	再在RSADataSigner.m文件中 搜索代码
+	[result appendString:@"\n-----END PRIVATE KEY-----"];
+	将其改成
+	[result appendString:@"\n-----END RSA PRIVATE KEY-----"];
+
+		
 #### 2017-02-09
 ##### 较长字段 URL 编码的坑
 有时候做网页分享时，需要生成一个 URL字符串，该URL 自由短短的几个字段，但每个字段的数据都很长，比如每个字段都是一个 JSON 结构，而该请求不方便用 POST 请求，如果直接传输该字符串，在移动客户端，可能没法打开（PC端往往可以），此时在 iOS 端又不直接提供 URL Encoding 的方法。
