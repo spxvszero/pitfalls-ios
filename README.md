@@ -1,6 +1,20 @@
 # pitfalls-ios
 
 
+#### 2017-03-09
+
+#### YTKNetwork 上传图片坑总结
+在使用 CocoaPods 引入最新 YTKNetwork 进行网络请求时，在构造 constructingBodyBlock 的 formData appendPartWithFileData: name: fileName: mineType: 时，报了一个未能发现 appendPartWithFileData 方法的错误提示，整个工程无法在继续进行。
+提示如下：
+
+		No known instance method for selector 'appendPartWithFileData: name: fileName: mineType:'
+
+解决方法：
+在 YTKNetwork issues 里找到了如下解决办法，需要再加入头文件
+     
+     #import "AFURLRequestSerialization.h"
+可正常编译。
+
 #### 2017-02-28
 
 #### 集成支付宝时出现：rsa_private read error : private key is NULL 的坑
