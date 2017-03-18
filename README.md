@@ -1,5 +1,24 @@
 # pitfalls-ios
 
+
+#### 2017-03-18
+
+##### YTKNetwork 上传音频文件的无法成功的问题
+
+在使用 YTKNetwork 进行上传音频文件的时候，仿照上传图片的例子，将上传的 type 类型改为 audio/m4a 发现无法上传成功，后台状态码 state code == 500, 报了和没有适配 AFNeworking 的 contentType 类似的问题，一样的错误。
+
+解决方法如下：    
+在配置 YTKNetworkAgent 的时候，统一配置，例：
+		
+	- (void)converContentTypeConfig{
+    	YTKNetworkAgent *agent = [YTKNetworkAgent sharedAgent];
+   		NSSet *acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"text/css",@"audio/m4a", nil];
+    	NSString *keypath = 	@"jsonResponseSerializer.acceptableContentTypes";
+    	[agent setValue:acceptableContentTypes forKeyPath:keypath];
+	}
+将需要添加的 contentType 添加到集合里面，比如音频的类型为 @"audio/m4a"，问题即可解决。    
+
+
 #### 2017-03-07
 
 项目运行在 ipad 上应用图标无法显示的几种可能
