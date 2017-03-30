@@ -1,6 +1,101 @@
 # pitfalls-ios
+#### 2017-03-29
+##### NavigationController 手势导致整个程序页面不响应问题
+使用 UINavigationController ，系统自带的附加了一个从屏幕左边缘开始滑动可以实现 pop 的手势。    
+但是，如果自定义了 navigationItem 的 leftBarButtonItem，那么这个手势就会失效。解决方法有很多种  	  
 
+1、重新设置手势的 delegate
 
+self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;	
+
+2、自定义手势事件
+
+[self.navigationController.interactivePopGestureRecognizer addTarget:self action:@selector(handleGesture:)];
+
+我使用了第一种方案，继承 UINavigationController 写了一个子类，直接设置 delegate 到 self 。并且让 gesture 始终可以 begin	
+
+	-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer	
+	{		
+		return YES;		
+	}		
+
+但是出现很多问题，比如说在 rootViewController 的时候这个手势也可以响应，导致整个程序页面不响应；
+
+如果在 push 的同时我触发这个手势，那么会导致 navigationBar 错乱，甚至 crash；
+
+push 了多层后，快速的触发两次手势，也会错乱。
+
+尝试了种种方案后我的解决方案是加个判断，代码如下，这次运行良好了。
+
+@interface NavRootViewController : UINavigationController<UIGestureRecognizerDelegate,UINavigationControllerDelegate>	
+ 
+ 
+@property(nonatomic,weak) UIViewController* currentShowVC;
+
+ 
+@end
+
+　　
+
+@implementation NavRootViewController    
+
+ 
+-(id)initWithRootViewController:(UIViewController *)rootViewController
+
+{
+
+	NavRootViewController* nvc = [super initWithRootViewController:rootViewController];
+
+	self.interactivePopGestureRecognizer.delegate = self;
+
+	nvc.delegate = self;
+
+	return nvc;
+
+}   
+ 
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController
+animated:(BOOL)animated
+
+{
+
+ 
+}
+ 
+
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+
+{
+
+	if (navigationController.viewControllers.count == 1)
+	
+	   self.currentShowVC = Nil;
+	   
+	else
+	
+	  self.currentShowVC = viewController;
+	  
+}
+ 
+ 
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+
+{
+
+	if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+	
+	return (self.currentShowVC == self.topViewController);
+	
+	}
+	
+	return YES;
+	
+}
+ 
+ 
+@end
 #### 2017-03-18
 
 ##### YTKNetwork 上传音频文件的无法成功的问题
