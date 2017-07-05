@@ -4,7 +4,7 @@ GitBook 形式浏览：[https://42chapters.gitbooks.io/pitfalls-ios/content/](ht
 
 ## 这是什么？
 
-pitfalls-ios 是 pitfalls 系列中的 iOS 版本。针对 iOS 开发者工作中遇到的各种“坑”。
+pitfalls-ios 是 pitfalls 系列中的 iOS 版本。iOS 开发者实际工作中遇到的各种“坑”，让你掉“坑”里面也有办法爬起来，或者让你提前知道哪里有“坑”。
 
 ## 如何贡献？
 
