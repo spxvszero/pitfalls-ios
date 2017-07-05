@@ -33,10 +33,26 @@ iPod Touch 不支持震动。
 震动的代码：
 
 ```
+#import <AudioToolbox/AudioToolbox.h>
+
 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);   
 ```
 iPhone：每个调用都会生成一个简短的 1~2 秒的震动。   
 iPod Touch： 该调用不执行任何操作，但也不会发生错误！ 
+
+待验证内容：
+
+只有各个版本的iPhone具备振动提醒功能。很遗憾，没有公开的API用于检测设备是否支持振动功能。不过，AudioToolbox.framework有两个方法用来选择性地振动不同版本的iPhone：
+
+```
+#import <AudioToolbox/AudioToolbox.h>
+
+AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+```
+第一个方法会振动iPhone，而在iPod touch/iPad上则会发出“哔哔”的响声。第二个方法只会振动iPhone。在不支持振动的设备上，它什么都不做。如果你正在开发的一款游戏通过振动设备来提示危险，或是开发一款迷宫游戏，当玩家撞到墙时发出振动，那么应该用第二个方法。第一个方法用来提醒用户，包括振动和发出哔哔声，而第二个方法只能用来发出振动。
+
+参考：[http://www.cnblogs.com/wfwenchao/p/4000131.html](http://www.cnblogs.com/wfwenchao/p/4000131.html)
 
 **解决方法：**调整产品在 iPod Touch 上的使用策略。  
 
