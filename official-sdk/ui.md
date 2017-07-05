@@ -1,10 +1,17 @@
-# ui
+# UI
+
+## 1. `NavigationController` 手势导致整个程序页面不响应
+
+### 问题描述：
+
+使用 `UINavigationController` 时，系统自带的附加了一个从屏幕左边缘开始滑动可以实现 pop 的手势。但是，如果自定义了 navigationItem 的 leftBarButtonItem，那么这个手势就会失效。	  
+### 原因分析：
 
 
 
-##### NavigationController 手势导致整个程序页面不响应问题
-使用 UINavigationController ，系统自带的附加了一个从屏幕左边缘开始滑动可以实现 pop 的手势。    
-但是，如果自定义了 navigationItem 的 leftBarButtonItem，那么这个手势就会失效。解决方法有很多种  	  
+### 解决方法：
+
+
 
 1、重新设置手势的 delegate
 
