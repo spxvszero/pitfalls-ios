@@ -1,5 +1,6 @@
 # pitfalls-ios
 
+<img src="logo-pitfalls-ios.png" width="" height="200"/>
 
 **备注：本仓库正在进行格式调整，以便大家有更好的查找预览的格式，请耐心等待。**
 
