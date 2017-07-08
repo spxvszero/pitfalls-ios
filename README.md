@@ -4,7 +4,7 @@
 
 **备注：本仓库正在进行格式调整，以便大家有更好的查找预览的格式，请耐心等待。**
 
-GitBook 形式浏览：[https://42chapters.gitbooks.io/pitfalls-ios/content/](https://42chapters.gitbooks.io/pitfalls-ios/content/)
+GitBook 形式浏览：[https://pitfalls-ios.42chapters.com](https://pitfalls-ios.42chapters.com)
 
 ## 这是什么？
 
