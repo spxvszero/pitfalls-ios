@@ -616,5 +616,23 @@ iOS9的国际化语言和iOS8的国际化语言有一定的差异。比如中国
 处理方式修改为把获取的语言跟plist的语言做一个对比，如果包含plist的国际化的语言就显示plist里面的语言（不能用获取的语言，因为有地区概念，如果不这样处理的话，就要对应的每个地区都要处理），否则就显示英文。
 
 
+1.处理了一个项目上传到App Store出现bug。
+
+```
+ERROR ITMS-90022:"Missing required icon file.The bundle does not contain an app icon for iPhone/iPod Touch of exactly '57×57'pixels,in .png format for iOS versions < 7.0".
+
+WARNING ITMS-90025:"Missing recommended icon file.The bundle does not contain an app icon for iPhone/iPod Touch of exactly '120×120'pixels,in .png format for iOS versions >= 7.0".
+
+ERROR ITMS-90032:"Invalid Image Path - No image found at the path refrenced under key 'CFBundleIcons':'AppIcon60×60'".
+```
+
+说明：
+
++ 目前公司开发的iOS App支持的最低版本是iOS7,所以要注意在 `TARGETS -> project -> General -> Deployment Info -> Deployment Target` 设置你App运行的最低版本。
++ 在这里有对App Icon详细的描述：[https://developer.apple.com/library/ios/qa/qa1686/_index.html](https://developer.apple.com/library/ios/qa/qa1686/_index.html)
+
+解决：通过上面的苹果官方网站的帮助文档，将项目中所有位置的App Icon的尺寸核对，并且加入，问题得到解决！
+
+
 
 
