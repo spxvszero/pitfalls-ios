@@ -1,7 +1,7 @@
 # ios-app-store-review-guidelines-tips
 
 **************  
-#### 2017-07-29
+#### 2017-07-20
 **问题原文如下：** 
 Dear developer,
 
