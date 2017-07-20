@@ -1,6 +1,151 @@
 # ios-app-store-review-guidelines-tips
 
 **************  
+#### 2017-07-20
+**问题原文如下：** 
+
+Dear developer,
+
+We have discovered one or more issues with your recent delivery for "比牛体育". To process your delivery, the following issues must be corrected:
+
+Invalid Swift Support- The SwiftSupport folder is missing. Rebuild your app using the current public (GM) version of Xcode and resubmit it.
+
+Once these issues have been corrected, you can then redeliver the corrected binary.
+
+Regards,
+
+The App Store team
+
+**问题描述：**    
+
+在 Object-C 工程中使用Swift语言混编，如果没有在工程中的 build setting 设置 Embedded Content Contains Swift Code -> YES，
+虽然能成功打出包来，但是包内的并没有包含支持Swift所需要的文件夹和库文件。
+
+
+**解决方案**    
+1、在工程的 build setting 设置 Embedded Content Contains Swift Code -> YES
+
+2、通过 Xcode archive 打包，会自动生成 SwiftSupport文件夹，里面包含同.app中Framework文件夹下，文件名相同的动态库，但大小不同。 
+通过脚本生成ipa包里，需要把SwiftSupport文件夹放到ipa中
+
+3、或者直接把包含有Swift代码的所有文件删除即可
+
+
+**************  
+
+#### 2017-07-20
+**问题原文如下：**   
+
+	2. 3 Performance: Accurate Metadata
+	
+	2. 5 Performance: Software Requirements
+	
+	3. 2.2 Business: Other Business Model Issues - Unacceptable
+
+Guideline 2.3 - Performance - Accurate Metadata
+
+
+We noticed that your app's metadata includes the following information, which is not relevant to the app's content and functionality:
+
+Specifically, this app references a piracy storefront.
+
+Next Steps
+
+To resolve this issue, please revise or remove this content from your app's metadata. For resources on metadata best practices, you may want to review the [App Store Product Page](https://developer.apple.com/app-store/product-page/)  information available on the Apple developer portal.
+
+Since your iTunes Connect status is Rejected, a new binary will be required. Make the desired metadata changes when you upload the new binary.
+
+NOTE: Please be sure to make any metadata changes to all app localizations by selecting each specific localization and making appropriate changes.
+
+**Guideline 2.3.1 - Performance**
+
+
+We discovered that your app contains hidden features. Specifically, this app references a piracy storefront.
+
+You will experience a delayed review process if you deliberately disregard the App Store Review Guidelines, ignore previous rejection feedback in future app submissions, or use your app to mislead or deceive users.
+
+Important Information
+
+As a result of violating this guideline, your app’s review has been delayed. Future submissions of this app, and other apps associated with your Apple Developer account, will also experience a delayed review. Deliberate disregard of the App Store Review Guidelines and attempts to deceive users or undermine the review process are unacceptable and is a direct violation Section 3.2(f) of the [Apple Developer Program License Agreement](https://developer.apple.com/terms). Continuing to violate the [Terms & Conditions](https://developer.apple.com/terms/) of the Apple Developer Program will result in the termination of your account, as well as any related or linked accounts, and the removal of all your associated apps from the App Store.
+
+We want to provide a safe experience for users to get apps and a fair environment for for all developers to be successful. If you believe we have misunderstood or misinterpreted the intent of your app, you may submit an appeal for consideration or provide additional clarification by responding directly to this message in Resolution Center in iTunes Connect.
+
+**Guideline 2.5.1 - Performance - Software Requirements**
+
+
+Your app uses or references the following non-public APIs:
+
+__NSArrayM, __NSCFConstantString, __NSCFString, __NSDictionaryM, NSConcreteAttributedString, NSConcreteMutableAttributedString, UIInputSetContainerView, UIInputSetHostView, UIKeyboard, UIPeripheralHostView, UIStatusBarDataNetworkItemView
+
+The use of non-public APIs is not permitted on the App Store because it can lead to a poor user experience should these APIs change.
+
+Next Steps
+
+To resolve this issue, please revise your app to remove any non-public APIs. If you have defined methods in your source code with the same names as the above-mentioned APIs, we suggest altering your method names so that they no longer collide with Apple's private APIs to avoid your app being flagged in future submissions.
+
+Additionally, if you are using third-party libraries, please update to the most recent version of those libraries. If you do not have access to the libraries' source, you may be able to search the compiled binary using the "strings" or "otool" command line tools. The "strings" tool can output a list of the methods that the library calls and "otool -ov" will output the Objective-C class structures and their defined methods. These tools can help you narrow down where the problematic code resides. You could also use the "nm" tool to verify if any third-party libraries are calling these APIs.
+
+Resources
+
+For information on the "nm" tool, please review the ["nm tool" Xcode manual page](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/nm.1.html).
+
+If there are no alternatives for providing the functionality your app requires, you can file an [enhancement request](https://developer.apple.com/bugreporter/).
+
+**Guideline 2.5.2 - Performance - Software Requirements**
+
+
+During review, your app installed or launched executable code, which is not permitted on the App Store. Specifically, your app uses the itms-services URL scheme to install an app.
+
+Important Information
+
+As a result of violating this guideline, your app’s review has been delayed. Future submissions of this app, and other apps associated with your Apple Developer account, will also experience a delayed review. Deliberate disregard of the App Store Review Guidelines and attempts to deceive users or undermine the review process are unacceptable and is a direct violation Section 3.2(f) of the [Apple Developer Program License Agreement](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/nm.1.html). Continuing to violate the [Terms & Conditions](https://developer.apple.com/terms/) of the Apple Developer Program will result in the termination of your account, as well as any related or linked accounts, and the removal of all your associated apps from the App Store.
+
+We want to provide a safe experience for users to get apps and a fair environment for for all developers to be successful. If you believe we have misunderstood or misinterpreted the intent of your app, you may submit an appeal for consideration or provide additional clarification by responding directly to this message in Resolution Center in iTunes Connect.
+
+Guideline 3.2.2 - Business - Other Business Model Issues - Unacceptable
+
+
+Your app displays or promotes third-party apps, which is not appropriate for the App Store.
+
+Specifically, this app references a piracy storefront.
+
+Next Steps
+
+To resolve this issue, please remove this feature from your app.
+
+
+**问题描述：**    
+1、引用了一个盗版商店。
+原文并没有具体说明是什么盗版商店，分析所谓的盗版商店可能是指：应用中一个提示音购买页面，或是云音乐中的QQ音乐、酷狗音乐，或是新闻首页中出现的网易体育这个字样，苹果官方可能认为这是盗版应用。
+
+2、"__NSArrayM, __NSCFConstantString, __NSCFString, __NSDictionaryM, NSConcreteAttributedString, NSConcreteMutableAttributedString, UIInputSetContainerView, UIInputSetHostView, UIKeyboard, UIPeripheralHostView, UIStatusBarDataNetworkItemView" 
+
+使用私有 APIs 是不允许上架 App Store 的，因为可能会导致非常不好的用户体验。
+
+
+3、应用程序使用itms-services URL方案来安装应用程序。
+分析可能是“给我们评分”功能会直接跳转到app store 商店的某个应用页面，而我们的应用有没有上线，里面的apple id 不正确。也可能是隐藏的提醒用户软件更新功能被发现。
+
+**解决方案**    
+1、移除掉提示音购买相关页面、隐藏固件升级、添加云音乐隐藏逻辑，并且把云音乐中包含的QQ、酷狗等第三方音乐移除，把新闻主页中“网易体育”换成“比牛体育”。
+
+
+2、使用命令行工具，先cd 到工程的根目录，通过以下命令搜索出包含有私有方法的第三方库和工程文件，把它们全部移除
+
+grep -r __NSArrayM .
+grep -r __NSCFConstantString .
+grep -r __NSCFString .
+grep -r __NSDictionaryM .
+grep -r NSConcreteAttributedString .
+grep -r NSConcreteMutableAttributedString .
+grep -r UIInputSetContainerView .
+grep -r UIKeyboard .
+grep -r UIPeripheralHostView .
+grep -r UIStatusBarDataNetworkItemView .
+
+3、移除软件更新功能，移除跳转到app store评分页面的功能。
+
+**************  
 #### 2017-07-04
 **问题原文如下：**      
 Guideline 2.5.1 - Performance - Software Requirements
@@ -14,7 +159,7 @@ The use of non-public APIs is not permitted on the App Store because it can lead
 **问题描述：**    
 应用中使用了以下的私有 APIs ，包括以下：
 
-"LSApplicationWorkspace, defaultWorkspace, openSensitiveURL:withOptions:, __NSArrayM, __NSCFConstantString, __NSCFString, __NSDictionaryM, LSApplicationWorkspace, NSConcreteAttributedString, NSConcreteMutableAttributedString, UIStatusBarDataNetworkItemView" 
+"__NSArrayM, __NSCFConstantString, __NSCFString, __NSDictionaryM, NSConcreteAttributedString, NSConcreteMutableAttributedString, UIInputSetContainerView, UIInputSetHostView, UIKeyboard, UIPeripheralHostView, UIStatusBarDataNetworkItemView" 
 
 使用私有 APIs 是不允许上架 App Store 的，因为可能会导致非常不好的用户体验。
 
