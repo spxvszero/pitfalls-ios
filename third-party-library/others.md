@@ -39,3 +39,18 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 以上编译错误，是有一个一个.m文件没有被引入，可能是之前注销了引用，然后在`Build Phases`的`Compile Sources`中添加相关的.m文件即可。
+
+3.当APP处于后台的时候，如果没有一下参数的配置，蓝牙断开没有回调：
+
+```
+Required background modes
+
+1.App communicates using CoreBluetooth
+2.App shares data using CoreBluetooth
+```
+
+另外，还需要注意在`Capablities`里面的`Background Modes`里面选择：
+```
+1.Uses Bluetooth LE accessories
+2.Acts as a Bluetooth LE accessory
+```
