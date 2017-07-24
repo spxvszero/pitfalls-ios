@@ -55,15 +55,34 @@ Required background modes
 2.Acts as a Bluetooth LE accessory
 ```
 
-1.同事购买了一个日版的iPhone5，有一个有趣的特性：  
+4.同事购买了一个日版的iPhone5，有一个有趣的特性：  
 手机静音的情况下，拍照依然有声音！
 
-2.今天删除了本地的全部Xcode中使用的`.mobileprovisioning`文件，然后也删除了用于iOS的全部开发证书。然后重新创建了一个`.cer`证书文件，准备双击安装的时候，提示以下内容：  
+5.今天删除了本地的全部Xcode中使用的`.mobileprovisioning`文件，然后也删除了用于iOS的全部开发证书。然后重新创建了一个`.cer`证书文件，准备双击安装的时候，提示以下内容：  
 **不能修改“System Roots”钥匙串。**  
 *若要更改根证书是否会被信任，请在“钥匙串访问”中打开它，然后修改它的信任设置。新根证书应被添加到当前用户的登录钥匙串，如果它将被这台机器的所有用户共享，则应被添加到系统钥匙串。*  
 解决方法：我们点击确定之后，直接在当前窗口：`钥匙串 -> 登录`，将`.cer`文件直接拖拽进来即可！
 
 
-1.iOS应用的图标黑边的问题，有一种原因：就是设计师将图做了圆角处理，iOS系统本事会自动做圆角处理，由于角度不对应，就会出现酱的问题。
+6.iOS应用的图标黑边的问题，有一种原因：就是设计师将图做了圆角处理，iOS系统本事会自动做圆角处理，由于角度不对应，就会出现酱的问题。
 
-2.上传到App Store的应用信息中的图标，不能存在Alpha通道或者透明度。
+7.上传到App Store的应用信息中的图标，不能存在Alpha通道或者透明度。
+
+
+8.编译出来的.a库，运行发现以下错误：
+
+```
+Undefined symbols for architecture arm64:
+  "_OBJC_CLASS_$_LXGroupLampModel", referenced from:
+      objc-class-ref in libBluetoothLibrary.a(LXBluetoothDeviceManager.o)
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+一般这种错误是因为真正编译的时候，相对应的.m文件没有加入到编译中，我们可以去`TARGETS` -> `Build Phases` -> `Compile Sources`中查看是否有加入这个.m文件。
+
+9.有一个地方需要注意的就是：以下地方`"代理方法名"`处，Xcode是不会做错误校验处理的，最多`warning`，所以一定要注意，如果某个回调方法没有触发，很有可能是这里的问题。
+
+```
+respondsToSelector:@selector("代理方法名")
+```
