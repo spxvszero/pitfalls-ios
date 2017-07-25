@@ -86,3 +86,13 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 respondsToSelector:@selector("代理方法名")
 ```
+
+10.在打Ad Hoc测试包的时候，发现老是提示没有对应的`.mobileprovision`文件，但是其实已经下载到`\MobileDevice\Provisioning Profiles`文件夹下面，我删除掉重新安装即可解决这个问题，但是又会提示和开发组相关什么权限问题，我在选择`Team`的时候选择了`local`的配置，解决了问题！
+
+11.Xcode 在导出`.ipa`包的时候，在拉取登陆账户信息的时候，显示以下信息：
+
+```
+The request timed out.
+```
+
+然后这个导出`.ipa`包的过程就终止了。如果一直纠结于此的话，你可能一辈子都打不出来包。去到`Xcode -> Preferences -> Accounts`，我们发现其中有部分登陆的账号，右侧有一个闪电的图标，并且在右侧的详细信息中显示`The request timed out.`，我们重新登陆之后，就解决了这个问题。出现这种情况可能是当前网络问题，或者账号密码有更改。
