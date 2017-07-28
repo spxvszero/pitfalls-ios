@@ -117,4 +117,29 @@ process launch failed: failed to get the task for process 2316
 ```
 说明：由于多个页面需要利用代理来更新UI，所以我们可以采用代理集合，通过for循环来分发出去。
 
+15.有时候，你会发现通过Xcode写一个枚举，却发现不能引用，提示不存在，我们先将整个代码编译一下，然后就可以引用了。
+
+16.以下代码编译运行错误。
+
+```
+        case LXBluetoothDeviceCustomEQModeRock:
+            Byte byte[] = {13,7,255,3,9,mode,14};
+            NSData *checkData = [[NSData alloc] initWithBytes:byte length:byte[1]];
+            [self sendCustomCommand:self.global_cmdKey param1:0 param2:0 others:checkData];
+            break;
+```
+
+但是以下代码编译就没有问题：:cry: :cry: :cry:
+
+```
+        case LXBluetoothDeviceCustomEQModeUser:
+        {
+
+            Byte byte[] = {13,7,255,3,9,mode,14};
+            NSData *checkData = [[NSData alloc] initWithBytes:byte length:byte[1]];
+            [self sendCustomCommand:self.global_cmdKey param1:0 param2:0 others:checkData];
+        }
+```
+
+
 
