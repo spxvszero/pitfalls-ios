@@ -143,3 +143,21 @@ process launch failed: failed to get the task for process 2316
 
 
 
+17.重构代码，进行重命名[`Edit -> Refactor -> Rename`]的时候，发现有的时候，会出现部分的内容不能同步修改，目前还不知道是什么原因。没有修改过来的地方，有的通过重新编译之后可以定位没有修改的地方，但是有些代理回调方法就不提示了。
+
+18.使用Xcode在当前工程的Group中新建文件的时候，发现生成的文件名称是红色，背景是灰色的。我选取了另外一种方法，先将文件创建出来，然后再Add File，就可以了！
+
+19.Xcode运行项目出现一下错误：
+
+```
+duplicate symbol _OBJC_CLASS_$_***Manager in:
+    /Users/ifeegoo/Library/Developer/Xcode/DerivedData/Bluetooth-diybgwkcpztvmhffxofltfwpjjpv/Build/Intermediates/Bluetooth.build/Debug-iphoneos/Bluetooth.build/Objects-normal/arm64/***Manager-A1C9B786AB61733D.o
+    /Users/ifeegoo/Library/Developer/Xcode/DerivedData/Bluetooth-diybgwkcpztvmhffxofltfwpjjpv/Build/Intermediates/Bluetooth.build/Debug-iphoneos/Bluetooth.build/Objects-normal/arm64/***Manager-916E166E553EC92B.o
+duplicate symbol _OBJC_METACLASS_$_***Manager in:
+    /Users/ifeegoo/Library/Developer/Xcode/DerivedData/Bluetooth-diybgwkcpztvmhffxofltfwpjjpv/Build/Intermediates/Bluetooth.build/Debug-iphoneos/Bluetooth.build/Objects-normal/arm64/***Manager-A1C9B786AB61733D.o
+    /Users/ifeegoo/Library/Developer/Xcode/DerivedData/Bluetooth-diybgwkcpztvmhffxofltfwpjjpv/Build/Intermediates/Bluetooth.build/Debug-iphoneos/Bluetooth.build/Objects-normal/arm64/***Manager-916E166E553EC92B.o
+ld: 2 duplicate symbols for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+关键字：`duplicate symbols for architecture` ，我这个项目中包含Project还有Library，存在重复文件引入的可能，我们去到 `Targets -> Project - Build Phases -> Compile Sources ` 找到重复文件，移除之后，重新编译，即可！
