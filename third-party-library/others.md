@@ -161,3 +161,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 关键字：`duplicate symbols for architecture` ，我这个项目中包含Project还有Library，存在重复文件引入的可能，我们去到 `Targets -> Project - Build Phases -> Compile Sources ` 找到重复文件，移除之后，重新编译，即可！
+
+20.有时候在Xcode的Team设置中，总是提醒需要Fix Issues，提醒的是没有对应的mobileprovision文件，但是实际上又是在当前的文件目录下。我们可以找到那个对应的mobileprovision文件，删除之后，重新安装就没有问题了。
+
+21.今天早上自己使用的iPhone 5S突然开不了机，按电源键，频幕一直是黑的。后来通过同时按下电源键和Home键，出现了白背景和黑苹果的画面，然后再按电源键，依然无法打开。最后尝试了几次同时按下电源键和Home键，然后再按电源键，就开启了手机。
