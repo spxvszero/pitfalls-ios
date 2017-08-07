@@ -1,6 +1,34 @@
 # ios-app-store-review-guidelines-tips
 
 **************  
+#### 2017-08-07
+**问题描述**   
+
+上传提交 ipa 文件到 iTunes Connect 时，报了如下的错误：   
+构建新的 App 和 App 更新时，必须使用公共（GM）版 Xcode 6 或更高版本、macOS 以及 iOS SDK。请勿使用 Beta 版软件，包括 Beta 版 macOS 构建的 App。   
+
+**问题根源**   
+
+开发者升级了 Beta 版本的 macOS 和 Xcode ，打包的时候使用了 Beta 版软件（ Xcode 或者  macOS ）。   
+
+**解决方法**   
+
+##### 一   
+1、找到打包后的文件 Window -> Organizer -> Archives 找到对应的版本，右键 Show In Finder   
+2、找到相应的 .xcarchive 文件右键显示包内容 Products -> Applications -> .app 文件 右键显示包内容 -> 找到 Info.plist   
+3、找到 KEY – BuildMachineOSBuild 把 VALUE 改成正式版本的编译号，比如 16D32 (macOS 10.12)
+4、直接上传 App Store 即可。   
+
+##### 二
+1、临时修改系统版本号。   
+2、打开 /System/Library/CoreServices/SystemVersion.plist   
+3、修改图中第七行 KEY = ProductBuildVersion 对应的值即将当前“15F18b”改成正式版本的编译号，比如 116D32 (macOS 10.12)   
+4、重启Xcode、重新打包并提交iTunes Connect
+
+##### 三   
+1、使用正版软件（正版 macOS && Xcode ）进行打包。   
+
+**************  
 #### 2017-07-20
 **问题原文如下：** 
 
