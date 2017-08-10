@@ -175,3 +175,24 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 23.今天在整理证书的过程中，发现导出.p12文件的时候，明明输入了密码，但是导出.p12文件之后，发现密码错误。应该是没有输入进去。后来就导出了一个不需要密码的.p12文件。这样问题也不大。
 
 24.今天早上自己使用的iPhone 5S突然开不了机，按电源键，频幕一直是黑的。后来通过同时按下电源键和Home键，出现了白背景和黑苹果的画面，然后再按电源键，依然无法打开。最后尝试了几次同时按下电源键和Home键，然后再按电源键，就开启了手机。
+
+
+
+25.下面的代码最里层的括号如果不加上的话，编译器会报错.
+
+```
+case 8:
+                {
+                    if ((byteData[3] == 2) &&(byteData[3] == 4))
+                    {
+                        if ([self.lxBluetoothDeviceOBDManagerDelegate respondsToSelector:@selector(bluetoothDeviceOBDCarIgnitionWithStatusCode:)])
+                        {
+                        
+                        }
+                    }
+                }
+                    break;
+```
+
+
+26.通过91助手安装Ad Hoc版本的测试包的时候，不能通过直接将附件中的.ipa包拖入安装，这样就会出现问题。显示的是安装包解析错误，错误码：-400556023

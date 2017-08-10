@@ -1,5 +1,9 @@
 # ios-app-store-review-guidelines-tips
 
+[常见 App 拒绝情况](https://developer.apple.com/app-store/review/rejections/cn/)
+
+[App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
+
 **************  
 #### 2017-08-07
 **问题描述**   
