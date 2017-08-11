@@ -5,6 +5,24 @@
 [App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
 
 **************  
+#### 2017-08-11
+**问题描述**   
+
+上传提交 ipa 文件到 iTunes Connect 时，报了如下的错误：   
+Missing Push Notification Entitlement -Your app appears to register with the Apple Push Notification service, but the app
+signature s entitlements do not include the "aps-enivroment" entitlement.
+
+**问题根源**   
+
+在苹果开发者网站中先是移除了账号中的App ID ，然后再另一个账号中创建 App ID的时候，默认勾选上了推送功能，而并没有创建推送的证书，所以根本没有
+实现推送功能。苹果不允许没有实现此功能的情况下，在App ID中对应选项中勾选它。
+
+**解决方法**   
+
+##### 一   
+在苹果开发者网站中找到对应的App ID 进行重新编辑，把推送功能的勾选取消
+
+**************  
 #### 2017-08-07
 **问题描述**   
 
