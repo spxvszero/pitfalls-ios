@@ -24,3 +24,7 @@ Can't load project.
 ```
 
 这种尖括号和等号就是罪魁祸首，找到了解决掉即可。
+
+3.Info.plist 文件修改不生效。
+
+原因：Xcode 中如果有 Test 和 UITest 文件夹的话，里面对应的也有 Info.plist 文件，如果想要修改主项目的 Info.plist 文件，容易修改到错误的位置，让以为修改到位的内容，不生效。
