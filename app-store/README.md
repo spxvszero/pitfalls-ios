@@ -5,6 +5,42 @@
 [App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
 
 **************  
+
+#### 2017-12-06
+**问题描述**   
+
+App 的 Info.plist 包含UINewsstandIcon，这是报刊杂志功能。要启用报刊杂志功能，App 的 Info.plist 必须包含 UINewsstandApp = true 键
+
+**问题根源**   
+
+在实现 App 图标动态改变需要配置 Info.plist 里CFBundleAlternateIcons 的应用图片，CFBundleAlternateIcons 字典中也包含UINewsstandIcon 这个键，配置的时候不小心添加了这个键。
+
+**解决方法**   
+在info.plist 中删除 UINewsstandIcon 这个键，每次提交代码的时候都需要进行再次确认，防止一些遗漏，避免一些不必要的问题出现
+
+#### 2017-11-29
+**问题描述**   
+
+加上了科大讯飞 SDK 后的比牛体育的 ipa 在 Xcode 自带的验证机制中验证属于正常，但是上传至 iTunes Connect 时，报了如下的错误：   
+Your app BN Sport，2.1.1（206）（Apple ID：1278866247）has changed to Invalid Binary.
+
+**问题根源**   
+
+科大讯飞的SDK 需要用到 联系人权限 ，地理位置权限 ，麦克风权限，即使你没有调用到这些代码，但是只要 SDK 含有使用这些权限的代码，
+就得在工程中的 info.plist 中声明它们
+
+**解决方法**   
+  
+在info.plist 中加入
+       <key>NSLocationAlwaysUsageDescription</key>
+	<string>是否允许获取您手机的位置</string>
+	<key>NSLocationUsageDescription</key>
+	<string>是否允许使用您的位置</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>是否允许获取您手机的位置</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>录音</string>
+
 #### 2017-08-11
 **问题描述**   
 
