@@ -5,6 +5,38 @@
 [App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
 
 **************  
+#### 2017-12-06
+**问题描述**   
+
+提交到 App Store 上的审核的应用提醒：  
+
+***
+2. 1 Performance: App Completeness
+Hello,
+
+We are writing to let you know the results of your appeal for your app.
+
+The App Review Board evaluated your app and determined that the original rejection feedback is valid. Your app does not comply with:
+
+Performance 2.1
+While you have provided a demo video, the demo video provided only shows the pairing with the device, but not how the app controls or interacts with the device. It would be appropriate to either send us the necessary hardware or provide a demo video to show your app in use: 
+
+- on an actual iOS device when connecting to the hardware 
+- when controlling and interacting with the hardware 
+
+We hope you will consider making the necessary changes to be in compliance with the App Store Review Guidelines and will resubmit your revised binary.
+***
+
+
+**问题根源**   
+
+这个是提交到 App Store 上因为智能设备的演示视频存在一定问题，被拒绝了。
+
+**解决方法**   
+
+我们重新录制演示视频，将与蓝牙设备交互的内容更多的呈现出来，再次提交，审核通过了。
+
+
 
 #### 2017-12-06
 **问题描述**   
