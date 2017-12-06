@@ -5,6 +5,19 @@
 [App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
 
 **************  
+
+#### 2017-12-06
+**问题描述**   
+
+App 的 Info.plist 包含UINewsstandIcon，这是报刊杂志功能。要启用报刊杂志功能，App 的 Info.plist 必须包含 UINewsstandApp = true 键
+
+**问题根源**   
+
+在实现 App 图标动态改变需要配置 Info.plist 里CFBundleAlternateIcons 的应用图片，CFBundleAlternateIcons 字典中也包含UINewsstandIcon 这个键，配置的时候不小心添加了这个键。
+
+**解决方法**   
+在info.plist 中删除 UINewsstandIcon 这个键，每次提交代码的时候都需要进行再次确认，防止一些遗漏，避免一些不必要的问题出现
+
 #### 2017-11-29
 **问题描述**   
 
