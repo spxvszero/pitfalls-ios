@@ -5,6 +5,26 @@
 [App Store 审核指南](https://developer.apple.com/app-store/review/guidelines/cn/)
 
 **************  
+#### 2018-02-06
+**问题描述**   
+
+提交到 App Store 上的审核的应用提醒：  
+
+***
+Potential Loss of Keychain Access - The previous version of software has an application-identifier value of [‘xxxxxxxxxxxxx’] and the new version of software being submitted has an application-identifier of [‘xxxxxxxxxxxx’]. This will result in a loss of keychain access.
+***
+
+
+**问题根源**   
+
+提交到 App Store 选择了自动匹配证书打包上传选项，一般情况下选择自动匹配证书是没有问题，但是由于该应用之前是从一个账号转移到另一个账号，选择自动匹配证书
+有可能会在老的账号上自动创建 App 信息，导致上传时会发出以上警告
+
+**解决方法**   
+
+ 登录老账号，把该 App 信息丛老账号中删掉
+
+
 #### 2017-12-11
 **问题描述**   
 
