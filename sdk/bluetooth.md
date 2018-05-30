@@ -1,6 +1,14 @@
 # 蓝牙
 
-## 1.蓝牙设备返回有表情的设备名字时，返回设备名字为空的问题。
+### 1.蓝牙设备返回有表情的设备名字时，返回设备名字为空的问题。
+
+#### 环境参数：
+
+```
+***
+```
+
+#### 问题分析：
 
 蓝牙搜索返回接口：
 
@@ -18,9 +26,14 @@
  *  @seealso scanStart
  */
 -(void)foundPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData;
-```
+
+
+#### 解决方法：
 
 当返回有表情的设备时：
 peripheral返回的name不为空，有设备名字并且带有表情符号。
 advertisementData返回的设备名字为空，其他数据正常。
 所以，当用设备名字时最好用peripheral的name字段。不要用advertisementData来获取设备名。
+
+
+
