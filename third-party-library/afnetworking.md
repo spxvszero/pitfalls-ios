@@ -1,11 +1,20 @@
 # [YTKNetwork](https://github.com/AFNetworking/AFNetworking)
 
-## 1.支持 https
+### 1.支持 https
+
+#### 环境参数：
+
+[参数描述]
+
+#### 问题分析：
 
 在 Xcode7.0 之后,苹果废弃了 NSURLConnection 方法,数据请求使用 NSURLSession，作为网络请求类第三方库使用量最大的 AFN 也及时的更新的新的版本—— AFN 3.0版本。
 新的版本的里废弃了基于 NSURLConnection 封装的 AFHTTPRequestOperationManager，转而使用基于 NSURLSession 封装的 AFHTTPSessionManager 了。
 
-1）支持 https（校验证书）:
+
+#### 解决方法：
+
+支持 https（校验证书）:
 
 
 

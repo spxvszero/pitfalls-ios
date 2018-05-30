@@ -1,12 +1,16 @@
 # 运行
 
-## 卡顿
+### 1.点击应用图标卡顿
 
-### 1. 点击应用图标卡顿
+#### 环境参数：
 
-**可能的原因和解决方法：**  
+```
+*
+```
 
-+ `didFinishLaunchingWithOptions ` 方法中有较多的操作。
+#### 问题分析：
+
+`didFinishLaunchingWithOptions ` 方法中有较多的操作。
 
 分析：  
 一个应用启动的过程：`start` -> (加载 `framework`，动态静态链接库，启动图片，`Info.plist`，`pch` 等)-> `main` 函数-> `UIApplicationMain` 函数。  
@@ -33,3 +37,8 @@
 return YES;
 }
 ```
+
+#### 解决方法：
+
+减少 `didFinishLaunchingWithOptions ` 方法中有较多的操作，开启异步线程来处理。
+

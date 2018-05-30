@@ -66,83 +66,26 @@
 ```
 ***
 
-**参考样例 A：gradle.md**
+**参考样例 A：device.md**
 *** 
-### 1.Execution Failed for task :app:compileDebugJavaWithJavac
+### 1.蓝牙设备重命名成功后，iOS 手机系统蓝牙搜索不到更新之后的设备名称。
 
 #### 环境参数：
 
-```  
-System:macOS High Sierra Version 10.13
-IDE:Android Studio 3.1
-Gradle:2.10
-Gradle Plugin:2.1.2
+```
+iPhone 6
 ```
 
 #### 问题分析：
 
-Gradle 构建的时候出现编译错误，但是没有得到具体的错误提示信息，所以我们需要通过特殊手段来获取更多有用的细节信息。
-
-
-#### 解决方法：
-
-通过以下常用的 Gradle 命令，可以获得更多有用的细节信息提示：
-
-```
-*clean project
-./gradlew clean  
-
-*build project
-./gradlew build
-
-*build for debug package
-./gradlew assembleDebug or ./gradlew aD
-
-*build for release package
-./gradlew assembleRelease or ./gradlew aR
-
-*build for release package and install
-./gradlew installRelease or ./gradlew iR Release
-
-*build for debug package and install
-./gradlew installDebug or ./gradlew iD Debug
-
-*uninstall release package
-./gradlew uninstallRelease or ./gradlew uR
-
-*uninstall debug package
-./gradlew uninstallDebug or ./gradlew uD 
-
-*all the above command + "--info" or "--debug" can get more detail information.
-```
-
-***
-
-**参考样例 B：android-studio.md**
-***
-### 1.Android Studio Debug 模式不可用。
-
-#### 环境参数：
-
-```  
-System:macOS High Sierra Version 10.13
-IDE:Android Studio 3.1
-Gradle:2.10
-Gradle Plugin:2.1.2
-```
-
-#### 问题分析：
-
-原因未知。
+`iOS 7` 系统的手机蓝牙设备重命名后，手机蓝牙系统搜索到的蓝牙设备名称会立即改变，
+而 `iOS 8` 以上的系统，蓝牙设备重命名成功后，并不会立马更新名称。
 
 #### 解决方法：
 
-可采用以下方法解决尝试解决：  
-1).重启 Android Studio  
-2).重启 macOS  
-3).重装 Android Studio
+解决的方法是在应用中只要蓝牙设备名修改成功后，立即保存修改成功后的名字到本地，
+每次搜索到该设备时候，直接用本地名字替换。
 ***
-
 
 #### 3°. 一般原则：
 
@@ -154,10 +97,10 @@ E.**代码的引入方式有两种，一种是采用双"```"引入，另外一�
 
 #### 4°. 目录结构和文件名称要求：
 
-仓库管理者请注意，所有的目录和文件名称，除了特殊情况之外，全部采用小写字母与横杠的组合。每一层目录底下包含一个 `README.md` 文件，如果当前内容（比如：exception）没有下一级目录细分的话，就将包含内容的文件名称命名成：`exception.md`。
+仓库管理者请注意，所有的目录和文件名称，除了特殊情况之外，全部采用小写字母与横杠的组合。每一层目录底下包含一个 `README.md` 文件，如果当前内容（比如：device）没有下一级目录细分的话，就将包含内容的文件名称命名成：`device.md`。
 
 
 
 #### 5°. 不适合提交的内容：
 
-非 Android 内容，非 iOS “坑”内容，例如：小知识点、专题总结等。本仓库只接受 iOS 的“坑”并且包含解决方法的总结。
+非 iOS 内容，非 iOS “坑”内容，例如：小知识点、专题总结等。本仓库只接受 iOS 的“坑”并且包含解决方法的总结。
