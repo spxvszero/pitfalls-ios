@@ -1,23 +1,4 @@
-# pitfalls-ios
+# Table of contents
 
-* [官方 SDK]()
-   * [UI](official-sdk/ui.md)
-* [第三方库]()
-   * [YTKNetwork]()
-   * [AFNetworking]()
-* [第三方 SDK]()
-   * [支付宝]()
-   * [极光推送]()
-   * [科大讯飞]()
-* [适配]()
-   * [UI]()
-   * [设备]()
-   * [系统]()
-* [包管理器]()
-   * [CocoaPods]()
-* [IDE]()
-   * [Xcode]()
-* [网络]()
-   * [数据]()
-* [发布]()
-   * [APNS]()
+* Initial page
+
