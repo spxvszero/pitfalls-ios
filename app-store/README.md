@@ -57,7 +57,7 @@ The App Store team
 #### 环境参数：
 
 ```
-Apple Store Review
+App Store Review
 ```
 
 #### 问题分析：
@@ -66,11 +66,11 @@ Apple Store Review
 
 #### 解决方法：
 
-把原来的“此App需要访问你的媒体资料库”
+把原来的「此 App 需要访问你的媒体资料库」
 
 改成：
 
-“此App需要访问您的媒体资料库，用以播放音乐”
+「此 App 需要访问您的媒体资料库，用以播放音乐」
 
 ### 4.Guideline 5.1.2 - Legal - Privacy - Data Use and Sharing - Your app accesses user data from the device but does not have the required precautions in place. - To collect personal data with your app, you must make it clear to the user that their personal data will be uploaded to your server and you must obtain the user's consent before the data is uploaded. You must also have a Privacy Policy URL and ensure that the URL you provide directs users to your privacy policy.
 
@@ -78,7 +78,7 @@ Apple Store Review
 #### 环境参数：
 
 ```
-Apple Store Review
+App Store Review
 ```
 
 #### 问题分析：
@@ -87,7 +87,7 @@ Apple Store Review
 
 #### 解决方法：
 
-放置一个html文本在服务器上或者本地利用uiwebview或者wkwebview加载。
+放置一个 HTML 文本在服务器上或者本地利用 UIWebView 或者 WKWebView 加载。
 在使用到通讯录权限时弹出协议，同时在软件内部帮助或者更多界面里增加可点击访问的连接入口。
 
 
