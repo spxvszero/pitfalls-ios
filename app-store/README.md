@@ -52,7 +52,21 @@ The App Store team
 如果程序中还使用了其他的权限，只是该功能被隐藏了，不易发现，这时候也需要确保把其他隐藏的使用权限也申明。
 
 
-### 3.
+### 3.Missing Info.plist key - This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSContactsUsageDescription key with a string value explaining to the user how the app uses this data.
+
+#### 环境参数：
+
+```
+iTunes Connect @ App Store
+```
+
+#### 问题分析：
+
+用到了联系人权限，而没有详细描述和声明使用场景，有时候代码中没有用到这些权限，没调用这些方法，只是第三方应用在库里声明了，然后开发人员还未察觉。
+
+#### 解决方法：
+
+每次使用第三方库的时候，观察第三方库的依赖库是否包含了使用了隐私权限的库，观察第三方库是否包含一些调用联系人，照片，地理位置等等需要用到权限的方法
 
 
 
