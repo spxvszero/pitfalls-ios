@@ -51,8 +51,45 @@ The App Store team
 
 如果程序中还使用了其他的权限，只是该功能被隐藏了，不易发现，这时候也需要确保把其他隐藏的使用权限也申明。
 
+### 3.Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage - We noticed that your app requests the user’s consent to access their Apple Music, music and video activity, media library but does not clarify the use of this feature in the permission modal alert.Please see attached screenshots for details.￼
 
-### 3.Missing Info.plist key - This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSContactsUsageDescription key with a string value explaining to the user how the app uses this data.
+#### 环境参数：
+
+```
+App Store Review
+```
+
+#### 问题分析：
+
+应用需要访问用户的媒体库资料的权限。虽然已经做了权限申请的提示框，但却没有给用户明确的说明，这个权限会用在什么地方。
+
+#### 解决方法：
+
+把原来的「此 App 需要访问你的媒体资料库」
+
+改成：
+
+「此 App 需要访问您的媒体资料库，用以播放音乐」
+
+### 4.Guideline 5.1.2 - Legal - Privacy - Data Use and Sharing - Your app accesses user data from the device but does not have the required precautions in place. - To collect personal data with your app, you must make it clear to the user that their personal data will be uploaded to your server and you must obtain the user's consent before the data is uploaded. You must also have a Privacy Policy URL and ensure that the URL you provide directs users to your privacy policy.
+
+
+#### 环境参数：
+
+```
+App Store Review
+```
+
+#### 问题分析：
+
+应用需要访问用户的通讯录的权限。虽然已经做出提示框，给了详细的权限使用说明，但苹果要求增加用户隐私协议界面，这样保证用户的私有信息不会上传到服务器或者被用作商用。
+
+#### 解决方法：
+
+放置一个 HTML 文本在服务器上或者本地利用 UIWebView 或者 WKWebView 加载。
+在使用到通讯录权限时弹出协议，同时在软件内部帮助或者更多界面里增加可点击访问的连接入口。
+
+### 5.Missing Info.plist key - This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSContactsUsageDescription key with a string value explaining to the user how the app uses this data.
 
 #### 环境参数：
 
@@ -66,9 +103,7 @@ iTunes Connect @ App Store
 
 #### 解决方法：
 
-每次使用第三方库的时候，观察第三方库的依赖库是否包含了使用了隐私权限的库，观察第三方库是否包含一些调用联系人，照片，地理位置等等需要用到权限的方法
-
-
+每次使用第三方库的时候，观察第三方库的依赖库是否包含了使用了隐私权限的库，观察第三方库是否包含一些调用联系人，照片，地理位置等等需要用到权限的方法。
 
 
 
