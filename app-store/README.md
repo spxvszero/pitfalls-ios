@@ -90,14 +90,39 @@ App Store Review
 放置一个 HTML 文本在服务器上或者本地利用 UIWebView 或者 WKWebView 加载。
 在使用到通讯录权限时弹出协议，同时在软件内部帮助或者更多界面里增加可点击访问的连接入口。
 
+### 5.We began the review of your app but still are not able to continue because we need access to a video that demonstrates your app in use on an iOS device. - Specifically, please provide a demo video to demonstrate the interactive features associating with the hardware. - To provide a link to a demo video: - Log in to iTunes Connect - Click on “My Apps” - Select your app - Scroll down to “App Review Information” - Provide demo video access details in the “Notes” section - Click Save - Click Submit for Review - Once this information is available, we can continue with the review of your app.
+
+
+#### 环境参数：
+
+```
+App Store Review
+```
+
+#### 问题分析：
+
+由于我们的应用使用到实体硬件设备，所以需要苹果需要我们拍个视频演示如何使用我们的应用。
+
+#### 解决方法：
+
+上传一个视频到开放的视频网站，把链接放在 App 提交审核的页面备注里。
+PS.视频播放最好不要有广告，不然苹果会提示「are not able to access the provided demo」,并需要你再次提交审核。
+
+### 6.This type of app has been identified as one that may violate one or more of the following App Store Review Guidelines. Specifically, these types of apps often: - 1.1.6 - Include false information, features, or misleading metadata. - 2.3.0 - Undergo significant concept changes after approval - 2.3.1 - Have hidden or undocumented features, including hidden "switches" that redirect to a gambling or lottery website - 3.1.1 - Use payment mechanisms other than in-app purchase to unlock features or functionality in the app - 4.3.0 - Are a duplicate of another app or are conspicuously similar to another app - 5.2.1 - Were not submitted by the legal entity that owns and is responsible for offering any services provided by the app - 5.3.4 - Do not have the necessary licensing and permissions for all the locations where the app is used - Before we can continue with our review, please confirm that this app does not violate any of the above guidelines. You may reply to this message in Resolution Center or the App Review Information section in App Store Connect to verify this app’s compliance.  - Given the tendency for apps of this type to violate the aforementioned guidelines, this review will take additional time. If at any time we discover that this app is in violation of these guidelines, the app will be rejected and removed from the App Store, and it may result in the termination of your Apple Developer Program account. - Should you choose to resubmit this app without confirming this app’s compliance, the next submission of this app will still require a longer review time. Additionally, this app will not be eligible for an expedited review until we have received your confirmation.
 
 
 
+#### 环境参数：
 
+```
+App Store Review
+```
 
+#### 问题分析：
 
+一般机审会出现此类的打回重审问题。在他提到的几项问题中排除原因，如果没有就可以不用做任何处理再次提交审核，如果存在某项问题，则手动处理，再次排除。我们的问题在于账号底下存在功能类似，但 UI 不同的面向不同客户的软件，所以苹果需要确认不是另一个软件的拷贝版本。
 
+#### 解决方法：
 
-
-
+在 App 提交审核的页面备注里，我们做了如下解释：该应用主要用于控制特定的智能设备，是为其他客户量身定制的，并没有存在上述问题。
 
