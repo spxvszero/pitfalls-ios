@@ -53,7 +53,6 @@ The App Store team
 
 ### 3.Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage - We noticed that your app requests the user’s consent to access their Apple Music, music and video activity, media library but does not clarify the use of this feature in the permission modal alert.Please see attached screenshots for details.￼
 
-
 #### 环境参数：
 
 ```
@@ -90,8 +89,25 @@ App Store Review
 放置一个 HTML 文本在服务器上或者本地利用 UIWebView 或者 WKWebView 加载。
 在使用到通讯录权限时弹出协议，同时在软件内部帮助或者更多界面里增加可点击访问的连接入口。
 
-### 5.We began the review of your app but still are not able to continue because we need access to a video that demonstrates your app in use on an iOS device. - Specifically, please provide a demo video to demonstrate the interactive features associating with the hardware. - To provide a link to a demo video: - Log in to iTunes Connect - Click on “My Apps” - Select your app - Scroll down to “App Review Information” - Provide demo video access details in the “Notes” section - Click Save - Click Submit for Review - Once this information is available, we can continue with the review of your app.
 
+### 5.Missing Info.plist key - This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSContactsUsageDescription key with a string value explaining to the user how the app uses this data.
+
+#### 环境参数：
+
+```
+iTunes Connect @ App Store
+```
+
+#### 问题分析：
+
+用到了联系人权限，而没有详细描述和声明使用场景，有时候代码中没有用到这些权限，没调用这些方法，只是第三方应用在库里声明了，然后开发人员还未察觉。
+
+#### 解决方法：
+
+每次使用第三方库的时候，观察第三方库的依赖库是否包含了使用了隐私权限的库，观察第三方库是否包含一些调用联系人，照片，地理位置等等需要用到权限的方法。
+
+
+### 6.We began the review of your app but still are not able to continue because we need access to a video that demonstrates your app in use on an iOS device. - Specifically, please provide a demo video to demonstrate the interactive features associating with the hardware. - To provide a link to a demo video: - Log in to iTunes Connect - Click on “My Apps” - Select your app - Scroll down to “App Review Information” - Provide demo video access details in the “Notes” section - Click Save - Click Submit for Review - Once this information is available, we can continue with the review of your app.
 
 #### 环境参数：
 
