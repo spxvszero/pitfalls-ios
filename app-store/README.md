@@ -124,7 +124,7 @@ App Store Review
 上传一个视频到开放的视频网站，把链接放在 App 提交审核的页面备注里。
 PS.视频播放最好不要有广告，不然苹果会提示「are not able to access the provided demo」,并需要你再次提交审核。
 
-### 6.This type of app has been identified as one that may violate one or more of the following App Store Review Guidelines. Specifically, these types of apps often: - 1.1.6 - Include false information, features, or misleading metadata. - 2.3.0 - Undergo significant concept changes after approval - 2.3.1 - Have hidden or undocumented features, including hidden "switches" that redirect to a gambling or lottery website - 3.1.1 - Use payment mechanisms other than in-app purchase to unlock features or functionality in the app - 4.3.0 - Are a duplicate of another app or are conspicuously similar to another app - 5.2.1 - Were not submitted by the legal entity that owns and is responsible for offering any services provided by the app - 5.3.4 - Do not have the necessary licensing and permissions for all the locations where the app is used - Before we can continue with our review, please confirm that this app does not violate any of the above guidelines. You may reply to this message in Resolution Center or the App Review Information section in App Store Connect to verify this app’s compliance.  - Given the tendency for apps of this type to violate the aforementioned guidelines, this review will take additional time. If at any time we discover that this app is in violation of these guidelines, the app will be rejected and removed from the App Store, and it may result in the termination of your Apple Developer Program account. - Should you choose to resubmit this app without confirming this app’s compliance, the next submission of this app will still require a longer review time. Additionally, this app will not be eligible for an expedited review until we have received your confirmation.
+### 7.This type of app has been identified as one that may violate one or more of the following App Store Review Guidelines. Specifically, these types of apps often: - 1.1.6 - Include false information, features, or misleading metadata. - 2.3.0 - Undergo significant concept changes after approval - 2.3.1 - Have hidden or undocumented features, including hidden "switches" that redirect to a gambling or lottery website - 3.1.1 - Use payment mechanisms other than in-app purchase to unlock features or functionality in the app - 4.3.0 - Are a duplicate of another app or are conspicuously similar to another app - 5.2.1 - Were not submitted by the legal entity that owns and is responsible for offering any services provided by the app - 5.3.4 - Do not have the necessary licensing and permissions for all the locations where the app is used - Before we can continue with our review, please confirm that this app does not violate any of the above guidelines. You may reply to this message in Resolution Center or the App Review Information section in App Store Connect to verify this app’s compliance.  - Given the tendency for apps of this type to violate the aforementioned guidelines, this review will take additional time. If at any time we discover that this app is in violation of these guidelines, the app will be rejected and removed from the App Store, and it may result in the termination of your Apple Developer Program account. - Should you choose to resubmit this app without confirming this app’s compliance, the next submission of this app will still require a longer review time. Additionally, this app will not be eligible for an expedited review until we have received your confirmation.
 
 
 
@@ -142,3 +142,26 @@ App Store Review
 
 在 App 提交审核的页面备注里，我们做了如下解释：该应用主要用于控制特定的智能设备，是为其他客户量身定制的，并没有存在上述问题。
 
+### 8.Guideline 4.3 - Design (This app duplicates the content and functionality of other apps submitted by you or another developer to the App Store, which is considered a form of spam. - Apps that simply duplicate content or functionality create clutter, diminish the overall experience for the end user, and reduce the ability of developers to market their apps. -The next submission of this app may require a longer review time, and this app will not be eligible for an expedited review until this issue is resolved. -Next Steps  - Review the Design section of the App Store Review Guidelines.  - Ensure your app is compliant with all sections of the App Store Review Guidelines and the Terms & Conditions of the Apple Developer Program.   - Once your app is fully compliant, resubmit your app for review. - Submitting apps designed to mislead or harm customers or evade the review process may result in the termination of your Apple Developer Program account. Review the Terms & Conditions of the Apple Developer Program to learn more about our policies regarding termination. - If you believe your app is compliant with the App Store Review Guidelines, you may submit an appeal. Alternatively, you may provide additional details about your app by replying directly to this message.)
+
+#### 环境参数：
+
+```
+App Store Review
+```
+
+#### 问题分析：
+
+因为上传了功能或者 UI 相似的应用在 App Store，可能还包括但不限于相同类型产品功能较一致，以及上传马甲或者分包灯问题，导致审核被拒。
+
+#### 解决方法：
+
+这里推荐有两种方法可以参考。
+
+第一个处理方法：修改元数据内容 ①修改应用程序价格，打造与原产品不同的价格级别； ②修改应用程序发布地区，打造与原产品不同的售卖地区或分不同地区运营； ③修改产品分类，打造与原产品不同的产品侧重属性分类； ④回复苹果产品设计理念等，表述产品情怀，希望打造独一无二的产品，比如功能目前会跟其他类似，会有相同情况；然后提出产品内某功能加以细节性说明，比如功能在市场上其他人还没做等等（此做法请慎重，描述好了 ok，描述差了打脸）。 修改后回复内容可参考以下内容： 尊敬的苹果开发者审核， 您好，针对于贵方提出的 4.3 相关问题，我方目前已修改“地区/售价/分类”，主要目的在于针对不同的人群属性做运营方面的区分，我们希望给予用户不同的产品体验，包括应用程序内的功能侧重点，展现给用户的内容等等；希望贵方能重新审核，及时给予我方 App 通过审核并发布至 App Store。 诚挚的问候！
+
+第二个处理方法：修改 App 二进制代码 ①升级 version，升级一个版本号提交审核； ②换 bundle id，换一个包再提交审核； ③换开发者账号，换不同账号提交审核； ④修改素材及 UI 色调等，修改 logo，修改主色调； ⑤修改功能界面等，此处可改功能也可做小开关； ⑥修改内部文件类名前缀，添加垃圾代码或者注释块，此处主要防苹果机审扫描。
+
+第二个方法涉及到需要大量的修改代码，这里给推荐一个造好的轮子，可以直接修改素材，类名前缀，和增加垃圾代码：[KLGenerateSpamCode 垃圾代码生成器](https://github.com/klaus01/KLGenerateSpamCode)
+
+顺便说下，苹果的三种审核机制！ 1，预审核 --- 扫描 api，及 plist 文件字符缺失等；此处分两步，第一步为上传时苹果 Application Loador 等应用对于适配 icon 等的检查，第二步为上传后苹果的功能性检查，例如配置了 Push 功能但有缺失或者未打开功能，则会邮件提示等等； 2，机审--- 此处扫描支付 SDK 等，及马甲情况，机器扫描主要看代码块，可参考百度蜘蛛抓取网站模块原理；如遇部分无法过机审情况可尝试加速绕过机审（不是 100% 成功）； 3，人工审核--- 此处主要检测功能或者 App 体验测试，例如用测试账号登录 App 体验功能，或其他是否明显 bug 等，ipv6 也在此处检测；
