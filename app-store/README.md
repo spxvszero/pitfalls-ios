@@ -162,6 +162,33 @@ App Store Review
 
 第二个处理方法：修改 App 二进制代码 ①升级 version，升级一个版本号提交审核； ②换 bundle id，换一个包再提交审核； ③换开发者账号，换不同账号提交审核； ④修改素材及 UI 色调等，修改 logo，修改主色调； ⑤修改功能界面等，此处可改功能也可做小开关； ⑥修改内部文件类名前缀，添加垃圾代码或者注释块，此处主要防苹果机审扫描。
 
+第三个处理方法：直接和苹果审核部门沟通。之前是可以直接通过打电话（Tel：4006 701 855）的方式联系到苹果审核部门的，但可能由于苹果公司内部机制变更，这个电话打过去，对方会给你提供一个网站：[联系他们](https://developer.apple.com/contact/)。你需要做的是在“申诉 App 被拒或 App 移除”的页面中认真详细的描述被拒 App 的不同点，提出合理有力的申诉。这里分享一段被拒了一个月的 App 重新上架的申诉文本供大家参考：
+
+对于贵方提出的 Guideline 4.3  问题，我方想反映的情况如下：
+
+该应用不同于其他应用的主要特征在于，通过蓝牙地址过滤，它被用于控制特定的智能设备。
+以及软件内的 UI，比如当前应用的不同灯光控制界面，引导界面，是否有语音助手功能以及语音助手的服务来源等。
+
+本应用被限定为只针对特定的硬件设备进行控制，目的是想对不同用户群属性进行运营方面的区分。
+
+我们希望给予用户获取到我们不同的硬件产品的同时，也能从移动端上获得不同的产品体验，包括应用程序内的功能侧重点，展现给用户的内容等。
+
+希望贵方能重新审核，及时给予我方应用程序通过审核并发布至App Store。诚挚的问候！
+
+For the Guideline 4.3 question you have raised, we would like to reflect the following:
+
+The main feature of this application, unlike other applications, is that it is used to control specific smart devices through Bluetooth address filtering.
+And the UI in the software, such as the different lighting control interface of the current application, the guiding interface, whether there is a voice assistant function and the service source of the voice assistant.
+
+This application is limited to control only for specific hardware devices in order to differentiate the operational aspects of different user group attributes.
+
+We want to give users access to our different hardware products, as well as different product experiences from the mobile side, including the functional focus within the application, the content presented to the user, and so on.
+
+I hope that you can re-review and give us the application to review and publish to the App Store in time. sincere regards!
+
+（Translation is taken directly from Google, please bear with me.）
+
 第二个方法涉及到需要大量的修改代码，这里给推荐一个造好的轮子，可以直接修改素材，类名前缀，和增加垃圾代码：[KLGenerateSpamCode 垃圾代码生成器](https://github.com/klaus01/KLGenerateSpamCode)
 
 顺便说下，苹果的三种审核机制：1，预审核 --- 扫描 api，及 plist 文件字符缺失等；此处分两步，第一步为上传时苹果 Application Loador 等应用对于适配 icon 等的检查，第二步为上传后苹果的功能性检查，例如配置了 Push 功能但有缺失或者未打开功能，则会邮件提示等等； 2，机审--- 此处扫描支付 SDK 等，及马甲情况，机器扫描主要看代码块，可参考百度蜘蛛抓取网站模块原理；如遇部分无法过机审情况可尝试加速绕过机审（不是 100% 成功）； 3，人工审核--- 此处主要检测功能或者 App 体验测试，例如用测试账号登录 App 体验功能，或其他是否明显 bug 等，ipv6 也在此处检测。
+
