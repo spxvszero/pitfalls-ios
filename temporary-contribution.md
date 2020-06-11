@@ -25,3 +25,67 @@ iOS `UITableView` 控件中的 `TableHeaderView`，在实现展开文字和收�
 
 
 
+### Swift 方法中传参无法修改的问题
+
+#### 环境参数：
+
+```
+Xcode 11.1 Swift 5
+```
+
+#### 问题分析：
+
+有如下方法：
+
+```
+struct Person {
+	var name:String
+	var age:Int
+}
+func growUp(person:Person)-->Person{
+	person.age = person.age + 1
+	return person
+}
+```
+编译器报如下错误 
+
+Cannot assign through subscript: 'ver' is a 'let' constant
+
+在 Swift 3 之前，只需要修改入参为：
+
+```
+func growUp(var person:Person)-->Person{
+	person.age = person.age + 1
+	return person
+}
+
+```
+
+即可解决，但是这种方法在 Swift 5 下会报如下错误
+
+'var' as a parameter attribute is not allowed
+
+#### 解决方法：
+
+解决办法有两种，一种是通过构建新的拷贝对象，然后改变值返回这个新的对象。
+
+```
+func growUp(person:Person)-->Person{
+	var mutePerson = person
+	mutePerson = person.age + 1
+	return mutePerson
+}
+```
+
+此种方式也可以通过重新构造一个新的结构体再一一赋值来实现。
+
+另一种方法就是通过关键词 inout 来强制要求传参为指针。
+
+```
+func growUp(person:inout Person)-->Person{
+	person = person.age + 1
+	return person
+}
+```
+
+在 Objective-C 中，传参一般是指针，而在 Swift 中这类值属于值类型，并不容易发现这类错误，而且 Objective-C 中编译器是不会对此类问题做约束的，但是 Swift 中却会引起编译器的报错。
